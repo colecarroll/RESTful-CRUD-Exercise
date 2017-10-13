@@ -13,15 +13,18 @@ function getOne(id) {
 
 function create(cartoon) {
 	// Add a cartoon to the database
-	return db.insertinto('cartoon').where('title', 'year', 'network').value('tazmanian devil', '1990', 'Looney Tunes')
+	console.log('taz')
+	return db.select('*').from('cartoon').insert(cartoon).returning('*')
 }
 
 function update(id, cartoon) {
 	// Update a cartoon with the specified id
+	return db.select('*').from('cartoon').update(cartoon).where('id', id).returning('*')
 }
 
 function remove(id) {
 	// Delete the specified cartoon
+	return db.select('*').from('cartoon').delete().where('id', id)
 }
 
 module.exports = {

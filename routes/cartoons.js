@@ -21,17 +21,28 @@ router.get('/:id', function(request, response){
 
 // Create the route for creating an item
 //this is where we left off
-router.post('/:cartoon', function(request, response){
-    queries.create(cartoon)
+router.post('/', function(request, response){
+    console.log('body ', request.body)
+    queries.create(request.body)
     .then(function(cartoons){
         response.json(cartoons);
     })
 })
 
 // Create the route for updating
-
+router.put('/:id', function(request, response){
+    console.log('body ', request.body)
+    queries.update(request.params.id, request.body)
+    .then(function(cartoons){
+        response.json(cartoons);
+    })
+})
 
 // Route for deleting an item
-
+router.delete('/:id', function(request, response){
+    queries.remove(request.params.id)
+    .then(()=>response.sendStatus(200))
+    
+})
 
 module.exports = router;
