@@ -9,6 +9,9 @@ router.get('/', function(request, response) {
     .then(function(cartoons){
         response.json(cartoons);
     })
+    .catch(function(error) {
+        response.json(error);
+    })
 })
 
 // Create the route for get one
