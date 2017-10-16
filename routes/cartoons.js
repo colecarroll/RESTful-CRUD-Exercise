@@ -23,6 +23,10 @@ router.get('/:id', function(request, response){
     .then(function(cartoons){
         response.json(cartoons);
     })
+    .catch(function(error) {
+        console.log(error)
+        response.json(error);
+    })
 })
 
 // Create the route for creating an item
@@ -33,6 +37,10 @@ router.post('/', function(request, response){
     .then(function(cartoons){
         response.json(cartoons);
     })
+    .catch(function(error) {
+        console.log(error)
+        response.json(error);
+    })
 })
 
 // Create the route for updating
@@ -42,12 +50,20 @@ router.put('/:id', function(request, response){
     .then(function(cartoons){
         response.json(cartoons);
     })
+    .catch(function(error) {
+        console.log(error)
+        response.json(error);
+    })
 })
 
 // Route for deleting an item
 router.delete('/:id', function(request, response){
     queries.remove(request.params.id)
     .then(()=>response.sendStatus(200))
+    .catch(function(error) {
+        console.log(error)
+        response.json(error);
+    })
     
 })
 
