@@ -7,9 +7,12 @@ var queries= require('../db/query');
 router.get('/', function(request, response) {
     queries.getAll()
     .then(function(cartoons){
+        console.log(cartoons)
         response.json(cartoons);
+
     })
     .catch(function(error) {
+        console.log(error)
         response.json(error);
     })
 })
